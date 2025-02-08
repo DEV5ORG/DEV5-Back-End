@@ -35,7 +35,6 @@ public class AuthenticationService {
         user.setRole(request.getRole());
 
         user = repository.save(user);
-
         String token = jwtService.generateToken(user);
 
         return new AuthenticationResponse(token);
@@ -53,7 +52,6 @@ public class AuthenticationService {
         String token = jwtService.generateToken(user);
 
         return new AuthenticationResponse(token);
-
     }
 
 }
