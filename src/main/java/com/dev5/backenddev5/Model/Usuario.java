@@ -12,7 +12,6 @@ import java.util.List;
 @Table(name = "usuarios")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
 
