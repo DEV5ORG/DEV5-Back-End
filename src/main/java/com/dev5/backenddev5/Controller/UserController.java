@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/add-user")
+    @PostMapping("/api/add-user")
     public Usuario submitUser(@RequestBody Usuario newUser){
         Usuario user = usuarioService.adduser(newUser);
         return user;
