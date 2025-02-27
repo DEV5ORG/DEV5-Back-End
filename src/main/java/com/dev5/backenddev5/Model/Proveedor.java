@@ -27,6 +27,4 @@ public class Proveedor {
     @Column(nullable = false)
     private Integer calificacion;
 
-
-
 }
