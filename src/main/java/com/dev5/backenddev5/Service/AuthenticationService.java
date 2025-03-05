@@ -28,8 +28,6 @@ public class AuthenticationService {
     public AuthenticationResponse register(Usuario request) {
         Usuario user = new Usuario();
         user.setNombre(request.getNombre());
-        user.setApellido1(request.getApellido1());
-        user.setApellido2(request.getApellido2());
         user.setCorreoElectronico(request.getCorreoElectronico());
         user.setContraseña(passwordEncoder.encode(request.getPassword()));
         user.setTipoUsuario(request.getTipoUsuario());

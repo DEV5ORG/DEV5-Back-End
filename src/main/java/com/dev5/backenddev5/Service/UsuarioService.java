@@ -22,10 +22,8 @@ public class UsuarioService implements UserDetailsService {
     }
 
     public Usuario adduser(Usuario user){
-        user.setId(1L);
+        user.setId(1);
         user.setNombre("Daniel");
-        user.setApellido1("Apellido1");
-        user.setApellido2("Apellido2");
         user.setCorreoElectronico("prueba.asd@gmail.com");
         this.UsuarioStringData.add(String.valueOf(user));
         return user;

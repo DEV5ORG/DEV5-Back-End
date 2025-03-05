@@ -22,16 +22,10 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
-    private String apellido1;
-
-    @Column(nullable = false)
-    private String apellido2;
 
     @Column(nullable = false, unique = true)
     private String correoElectronico;
@@ -45,18 +39,55 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "evento_id")
-    private List<Evento> evento;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Evento> eventos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Servicio> servicios = new ArrayList<>();
+
 
     public Usuario() {
     }
 
-    public Long getId() {
+    public Usuario(Integer id, String nombre, String correoElectronico, String contraseña, String tipoUsuario, Role role, List<Evento> eventos, List<Servicio> servicios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correoElectronico = correoElectronico;
+        this.contraseña = contraseña;
+        this.tipoUsuario = tipoUsuario;
+        this.role = role;
+        this.eventos = eventos;
+        this.servicios = servicios;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() { return contraseña; }
+
+    @Override
+    public String getUsername() { return correoElectronico; }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return true; }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -66,22 +97,6 @@ public class Usuario implements UserDetails {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido1() {
-        return apellido1;
-    }
-
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
-    }
-
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
     }
 
     public String getCorreoElectronico() {
@@ -108,33 +123,27 @@ public class Usuario implements UserDetails {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Role getRole() { return role; }
+    public Role getRole() {
+        return role;
+    }
 
     public void setRole(Role role) {
         this.role = role;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+    public List<Evento> getEventos() {
+        return eventos;
     }
 
-    @Override
-    public String getPassword() { return contraseña; }
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
+    }
 
-    @Override
-    public String getUsername() { return correoElectronico; }
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
 
-    @Override
-    public boolean isAccountNonExpired() { return true; }
-
-    @Override
-    public boolean isAccountNonLocked() { return true; }
-
-    @Override
-    public boolean isCredentialsNonExpired() { return true; }
-
-    @Override
-    public boolean isEnabled() { return true; }
-
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
 }
