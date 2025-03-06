@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    @GetMapping("/demo")
+    @GetMapping("/api/demo")
     public ResponseEntity<String> demo() {
         return ResponseEntity.ok("Hello from secured url");
     }
 
-    @GetMapping("/admin_only")
+    @GetMapping("/api/admin_only")
     public ResponseEntity<String> adminOnly() {
         return ResponseEntity.ok("Hello from admin only url");
     }
