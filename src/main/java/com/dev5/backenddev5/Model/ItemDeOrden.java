@@ -10,8 +10,9 @@ import lombok.Setter;
 @Table(name = "itemDeOrden")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
+
 public class ItemDeOrden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

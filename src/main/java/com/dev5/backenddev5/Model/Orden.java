@@ -14,8 +14,8 @@ import java.util.List;
 @Table(name = "orden")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 
 public class Orden {
 

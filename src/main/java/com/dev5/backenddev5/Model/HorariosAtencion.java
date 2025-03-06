@@ -13,8 +13,9 @@ import java.util.Date;
 @Table(name = "horariosAtencion")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
+
 public class HorariosAtencion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,8 +13,9 @@ import java.util.List;
 @Table(name = "servicio")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
+
 public class Servicio {
 
     @Id

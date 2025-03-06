@@ -12,8 +12,8 @@ import java.util.Date;
 @Table(name = "factura")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 
 public class Factura {
 

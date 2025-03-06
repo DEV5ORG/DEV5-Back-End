@@ -17,7 +17,8 @@ import java.util.List;
 @Table(name = "usuarios")
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
+
 public class Usuario implements UserDetails {
 
     @Id
