@@ -35,7 +35,6 @@ public class Evento {
     @Column(nullable = false)
     private String nombreEvento;
 
-
     @Column(nullable = false)
     private String ubicacion;
 
@@ -47,6 +46,7 @@ public class Evento {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
 
     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)

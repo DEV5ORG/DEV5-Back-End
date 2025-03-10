@@ -29,12 +29,13 @@ public class EventoService {
 
     public Evento createEvento(Evento evento) {
         validateUsuario(evento.getUsuario().getId());
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(evento.getUsuario().getId());
+        evento.setUsuario(usuarioOptional.get());
         return eventoRepository.save(evento);
     }
 
     public Evento updateEvento(Integer id, Evento eventoDetails) {
         Evento evento = eventoRepository.findById(id).orElseThrow(() -> new RuntimeException("Evento not found"));
-        validateUsuario(eventoDetails.getUsuario().getId());
         evento.setFechaHoraInicio(eventoDetails.getFechaHoraInicio());
         evento.setFechaHoraFinalizacion(eventoDetails.getFechaHoraFinalizacion());
         evento.setNumeroInvitados(eventoDetails.getNumeroInvitados());
@@ -43,8 +44,6 @@ public class EventoService {
         evento.setUbicacion(eventoDetails.getUbicacion());
         evento.setImagen(eventoDetails.getImagen());
         evento.setEditable(eventoDetails.getEditable());
-        evento.setUsuario(eventoDetails.getUsuario());
-        evento.setOrdenes(eventoDetails.getOrdenes());
         return eventoRepository.save(evento);
     }
 
