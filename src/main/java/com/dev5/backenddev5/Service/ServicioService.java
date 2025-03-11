@@ -39,9 +39,6 @@ public class ServicioService {
         servicio.setTipoServicio(servicioDetails.getTipoServicio());
         servicio.setImagen(servicioDetails.getImagen());
         servicio.setUbicacion(servicioDetails.getUbicacion());
-        servicio.setUsuario(servicioDetails.getUsuario());
-        servicio.setItems(servicioDetails.getItems());
-        servicio.setHorariosDeAtencion(servicioDetails.getHorariosDeAtencion());
         return servicioRepository.save(servicio);
     }
 

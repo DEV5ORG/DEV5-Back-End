@@ -1,11 +1,13 @@
 package com.dev5.backenddev5.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -27,10 +29,12 @@ public class HorariosAtencion {
     private Date fin;
 
     @Column(nullable = false)
-    private Time HoraInicioDia;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime HoraInicioDia;
 
     @Column(nullable = false)
-    private Time HoraFinDia;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime HoraFinDia;
 
     @ManyToOne
     @JoinColumn(name = "servicio_id", insertable = false, updatable = false)
@@ -40,7 +44,7 @@ public class HorariosAtencion {
     public HorariosAtencion() {
     }
 
-    public HorariosAtencion(Integer id, Integer servicio_id, Date inicio, Date fin, Time horaInicioDia, Time horaFinDia, Servicio servicio) {
+    public HorariosAtencion(Integer id, Integer servicio_id, Date inicio, Date fin, LocalTime horaInicioDia, LocalTime horaFinDia, Servicio servicio) {
         this.id = id;
         this.servicio_id = servicio_id;
         this.inicio = inicio;
@@ -82,19 +86,19 @@ public class HorariosAtencion {
         this.fin = fin;
     }
 
-    public Time getHoraInicioDia() {
+    public LocalTime getHoraInicioDia() {
         return HoraInicioDia;
     }
 
-    public void setHoraInicioDia(Time horaInicioDia) {
+    public void setHoraInicioDia(LocalTime horaInicioDia) {
         HoraInicioDia = horaInicioDia;
     }
 
-    public Time getHoraFinDia() {
+    public LocalTime getHoraFinDia() {
         return HoraFinDia;
     }
 
-    public void setHoraFinDia(Time horaFinDia) {
+    public void setHoraFinDia(LocalTime horaFinDia) {
         HoraFinDia = horaFinDia;
     }
 

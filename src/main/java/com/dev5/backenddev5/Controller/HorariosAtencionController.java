@@ -14,39 +14,33 @@ import java.util.Optional;
 public class HorariosAtencionController {
 
     @Autowired
-    private HorariosAtencionService service;
+    private HorariosAtencionService horariosAtencionService;
 
     @GetMapping
-    public List<HorariosAtencion> getAll() {
-        return service.findAll();
+    public List<HorariosAtencion> getAllHorariosAtencion() {
+        return horariosAtencionService.getAllHorariosAtencion();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<HorariosAtencion> getById(@PathVariable Integer id) {
-        Optional<HorariosAtencion> horariosAtencion = service.findById(id);
+    public ResponseEntity<HorariosAtencion> getHorariosAtencionById(@PathVariable Integer id) {
+        Optional<HorariosAtencion> horariosAtencion = horariosAtencionService.getHorariosAtencionById(id);
         return horariosAtencion.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public HorariosAtencion create(@RequestBody HorariosAtencion horariosAtencion) {
-        return service.save(horariosAtencion);
+    public HorariosAtencion createHorariosAtencion(@RequestBody HorariosAtencion horariosAtencion) {
+        return horariosAtencionService.createHorariosAtencion(horariosAtencion);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HorariosAtencion> update(@PathVariable Integer id, @RequestBody HorariosAtencion horariosAtencion) {
-        if (!service.findById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        horariosAtencion.setId(id);
-        return ResponseEntity.ok(service.update(horariosAtencion));
+    public ResponseEntity<HorariosAtencion> updateHorariosAtencion(@PathVariable Integer id, @RequestBody HorariosAtencion horariosAtencionDetails) {
+        HorariosAtencion updatedHorariosAtencion = horariosAtencionService.updateHorariosAtencion(id, horariosAtencionDetails);
+        return ResponseEntity.ok(updatedHorariosAtencion);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        if (!service.findById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        service.deleteById(id);
+    public ResponseEntity<Void> deleteHorariosAtencion(@PathVariable Integer id) {
+        horariosAtencionService.deleteHorariosAtencion(id);
         return ResponseEntity.noContent().build();
     }
 }

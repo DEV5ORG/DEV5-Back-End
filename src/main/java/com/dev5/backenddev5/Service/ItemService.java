@@ -29,18 +29,18 @@ public class ItemService {
 
     public Item createItem(Item item) {
         validateServicio(item.getServicio().getId());
+        Optional<Servicio> servicioOptional = servicioRepository.findById(item.getServicio().getId());
+        item.setServicio(servicioOptional.get());
         return itemRepository.save(item);
     }
 
     public Item updateItem(Integer id, Item itemDetails) {
         Item item = itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found"));
-        validateServicio(itemDetails.getServicio().getId());
         item.setNombre(itemDetails.getNombre());
         item.setDescripcion(itemDetails.getDescripcion());
         item.setPrecio(itemDetails.getPrecio());
         item.setImagen(itemDetails.getImagen());
         item.setUbicacion(itemDetails.getUbicacion());
-        item.setServicio(itemDetails.getServicio());
         return itemRepository.save(item);
     }
 
