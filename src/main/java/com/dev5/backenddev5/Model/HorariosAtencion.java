@@ -1,9 +1,8 @@
 package com.dev5.backenddev5.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Time;
@@ -13,9 +12,6 @@ import java.util.Date;
 @Table(name = "horariosAtencion")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class HorariosAtencion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +34,7 @@ public class HorariosAtencion {
 
     @ManyToOne
     @JoinColumn(name = "servicio_id", insertable = false, updatable = false)
+    @JsonBackReference
     private Servicio servicio;
 
     public HorariosAtencion() {

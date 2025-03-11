@@ -2,7 +2,8 @@ package com.dev5.backenddev5.Model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,14 +12,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "usuarios")
 @Getter
 @Setter
-//@AllArgsConstructor
-
 public class Usuario implements UserDetails {
 
     @Id
@@ -45,8 +42,8 @@ public class Usuario implements UserDetails {
     private List<Evento> eventos = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Servicio> servicios = new ArrayList<>();
-
 
     public Usuario() {
     }

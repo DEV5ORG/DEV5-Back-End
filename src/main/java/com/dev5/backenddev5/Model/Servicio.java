@@ -1,9 +1,9 @@
 package com.dev5.backenddev5.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -13,9 +13,6 @@ import java.util.List;
 @Table(name = "servicio")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class Servicio {
 
     @Id
@@ -24,6 +21,7 @@ public class Servicio {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonBackReference
     private Usuario usuario;
 
     @Column(nullable = false)
@@ -36,9 +34,11 @@ public class Servicio {
     private String ubicacion;
 
     @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Item> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<HorariosAtencion> horariosDeAtencion = new ArrayList<>();
 
     public Servicio() {

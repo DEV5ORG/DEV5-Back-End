@@ -29,12 +29,13 @@ public class ServicioService {
 
     public Servicio createServicio(Servicio servicio) {
         validateUsuario(servicio.getUsuario().getId());
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(servicio.getUsuario().getId());
+        servicio.setUsuario(usuarioOptional.get());
         return servicioRepository.save(servicio);
     }
 
     public Servicio updateServicio(Integer id, Servicio servicioDetails) {
         Servicio servicio = servicioRepository.findById(id).orElseThrow(() -> new RuntimeException("Servicio not found"));
-        validateUsuario(servicioDetails.getUsuario().getId());
         servicio.setTipoServicio(servicioDetails.getTipoServicio());
         servicio.setImagen(servicioDetails.getImagen());
         servicio.setUbicacion(servicioDetails.getUbicacion());

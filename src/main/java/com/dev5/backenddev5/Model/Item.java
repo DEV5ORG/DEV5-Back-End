@@ -1,18 +1,14 @@
 package com.dev5.backenddev5.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "item")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +30,8 @@ public class Item {
     private String ubicacion;
 
     @ManyToOne
-    @JoinColumn(name = "servicio_id", nullable = false)  // Hibernate maneja esta columna
+    @JoinColumn(name = "servicio_id", nullable = false)
+    @JsonBackReference
     private Servicio servicio;
 
     public Item() {
