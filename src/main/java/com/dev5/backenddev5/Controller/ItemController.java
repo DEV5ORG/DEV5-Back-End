@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.Item;
 import com.dev5.backenddev5.Service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public Item createItem(@RequestBody Item item) {
+    public Item createItem(@Valid @RequestBody Item item) {
         return itemService.createItem(item);
     }
 

@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.Orden;
 import com.dev5.backenddev5.Service.OrdenService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class OrdenController {
     }
 
     @PostMapping
-    public Orden createOrden(@RequestBody Orden orden) {
+    public Orden createOrden(@Valid @RequestBody Orden orden) {
         return ordenService.createOrden(orden);
     }
 

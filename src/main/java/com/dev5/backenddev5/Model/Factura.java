@@ -1,10 +1,9 @@
 package com.dev5.backenddev5.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 import java.util.Date;
 
@@ -12,31 +11,33 @@ import java.util.Date;
 @Table(name = "factura")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class Factura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull(message = "El monto no puede ser nulo")
+    @DecimalMin(value = "0.0", inclusive = false, message = "El monto debe ser mayor que 0")
     @Column(nullable = false)
     private Double monto;
 
+    @NotNull(message = "La fecha de pago no puede ser nula")
+    @PastOrPresent(message = "La fecha de pago debe ser en el pasado o presente")
     @Column(nullable = false)
     private Date fechaPago;
 
+    @NotNull(message = "El ID de la cuenta receptora no puede ser nulo")
     @Column(nullable = false)
     private Integer idcuentaReceptora;
 
+    @NotNull(message = "El ID de la cuenta emisora no puede ser nulo")
     @Column(nullable = false)
     private Integer idcuentaEmisora;
 
     @OneToOne
-    @JoinColumn(name = "orden_id", nullable = false)  // Hibernate maneja esta columna
+    @JoinColumn(name = "orden_id", nullable = false)
     private Orden orden;
-
 
     public Factura() {
     }

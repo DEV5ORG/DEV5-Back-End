@@ -1,10 +1,9 @@
 package com.dev5.backenddev5.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,23 +13,24 @@ import java.util.List;
 @Table(name = "orden")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class Orden {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull(message = "La fecha de inicio no puede ser nula")
+    @PastOrPresent(message = "La fecha de inicio debe ser en el pasado o presente")
     @Column(nullable = false)
     private Date fecha1;
 
+    @NotNull(message = "La fecha de fin no puede ser nula")
+    @Future(message = "La fecha de fin debe ser en el futuro")
     @Column(nullable = false)
     private Date fecha2;
 
     @ManyToOne
-    @JoinColumn(name = "evento_id", nullable = false)  // Hibernate maneja esta columna
+    @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;
 
     @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL, orphanRemoval = true)

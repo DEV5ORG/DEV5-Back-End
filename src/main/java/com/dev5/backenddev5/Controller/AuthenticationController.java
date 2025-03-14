@@ -3,6 +3,7 @@ package com.dev5.backenddev5.Controller;
 import com.dev5.backenddev5.Model.AuthenticationResponse;
 import com.dev5.backenddev5.Model.Usuario;
 import com.dev5.backenddev5.Service.AuthenticationService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class AuthenticationController {
 
     @PostMapping("/api/register")
     public ResponseEntity<AuthenticationResponse> register (
-            @RequestBody Usuario request
+            @Valid @RequestBody Usuario request
     ) {
         return ResponseEntity.ok(authService.register(request));
     }

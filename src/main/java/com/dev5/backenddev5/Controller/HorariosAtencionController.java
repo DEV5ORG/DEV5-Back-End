@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.HorariosAtencion;
 import com.dev5.backenddev5.Service.HorariosAtencionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class HorariosAtencionController {
     }
 
     @PostMapping
-    public HorariosAtencion createHorariosAtencion(@RequestBody HorariosAtencion horariosAtencion) {
+    public HorariosAtencion createHorariosAtencion(@Valid @RequestBody HorariosAtencion horariosAtencion) {
         return horariosAtencionService.createHorariosAtencion(horariosAtencion);
     }
 
