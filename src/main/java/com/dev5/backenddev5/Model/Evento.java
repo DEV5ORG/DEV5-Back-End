@@ -1,7 +1,9 @@
 package com.dev5.backenddev5.Model;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import jakarta.validation.constraints.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,36 +13,48 @@ import java.util.List;
 @Table(name = "eventos")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull(message = "La fecha y hora de inicio no puede ser nula")
+    @FutureOrPresent(message = "La fecha y hora de inicio debe ser en el presente o futuro")
     @Column(nullable = false)
     private Date fechaHoraInicio;
 
+    @NotNull(message = "La fecha y hora de finalización no puede ser nula")
+    @Future(message = "La fecha y hora de finalización debe ser en el futuro")
     @Column(nullable = false)
     private Date fechaHoraFinalizacion;
 
+    @NotNull(message = "El número de invitados no puede ser nulo")
+    @Min(value = 1, message = "El número de invitados debe ser al menos 1")
     @Column(nullable = false)
     private Integer numeroInvitados;
 
+    @NotNull(message = "El presupuesto final no puede ser nulo")
+    @DecimalMin(value = "0.0", inclusive = false, message = "El presupuesto final debe ser mayor que 0")
     @Column(nullable = false)
     private Double presupuestoFinal;
 
+    @NotNull(message = "El nombre del evento no puede ser nulo")
+    @Size(min = 1, max = 100, message = "El nombre del evento debe tener entre 1 y 100 caracteres")
     @Column(nullable = false)
     private String nombreEvento;
 
+    @NotNull(message = "La ubicación no puede ser nula")
+    @Size(min = 1, max = 200, message = "La ubicación debe tener entre 1 y 200 caracteres")
     @Column(nullable = false)
     private String ubicacion;
 
+    @NotNull(message = "La imagen no puede ser nula")
+    @Size(min = 1, max = 500, message = "La imagen debe tener entre 1 y 500 caracteres")
     @Column(nullable = false)
     private String imagen;
 
+    @NotNull(message = "El campo editable no puede ser nulo")
     @Column(nullable = false)
     private Boolean editable;
 
@@ -52,7 +66,7 @@ public class Evento {
     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orden> ordenes = new ArrayList<>();
 
-    //Constructor
+    // Constructor
     public Evento() {
     }
 

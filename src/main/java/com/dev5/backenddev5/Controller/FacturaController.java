@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.Factura;
 import com.dev5.backenddev5.Service.FacturaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class FacturaController {
     }
 
     @PostMapping
-    public Factura createFactura(@RequestBody Factura factura) {
+    public Factura createFactura(@Valid @RequestBody Factura factura) {
         return facturaService.createFactura(factura);
     }
 

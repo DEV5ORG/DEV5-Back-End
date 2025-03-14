@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.Servicio;
 import com.dev5.backenddev5.Service.ServicioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ServicioController {
     }
 
     @PostMapping
-    public Servicio createServicio(@RequestBody Servicio servicio) {
+    public Servicio createServicio(@Valid @RequestBody Servicio servicio) {
         return servicioService.createServicio(servicio);
     }
 

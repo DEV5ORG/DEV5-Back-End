@@ -2,6 +2,7 @@ package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.ItemDeOrden;
 import com.dev5.backenddev5.Service.ItemDeOrdenService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class ItemDeOrdenController {
     }
 
     @PostMapping
-    public ItemDeOrden createItemDeOrden(@RequestBody ItemDeOrden itemDeOrden) {
+    public ItemDeOrden createItemDeOrden(@Valid @RequestBody ItemDeOrden itemDeOrden) {
         return itemDeOrdenService.createItemDeOrden(itemDeOrden);
     }
 

@@ -1,27 +1,26 @@
 package com.dev5.backenddev5.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "itemDeOrden")
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-
 public class ItemDeOrden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
+    @NotNull(message = "La cantidad no puede ser nula")
+    @Min(value = 1, message = "La cantidad debe ser al menos 1")
     @Column(nullable = false)
     private Integer cantidad;
 
+    @NotNull(message = "El precio total no puede ser nulo")
+    @DecimalMin(value = "0.0", inclusive = false, message = "El precio total debe ser mayor que 0")
     @Column(nullable = false)
     private Double precioTotal;
 
@@ -43,7 +42,6 @@ public class ItemDeOrden {
         this.orden = orden;
         this.item = item;
     }
-
     public Integer getId() {
         return id;
     }

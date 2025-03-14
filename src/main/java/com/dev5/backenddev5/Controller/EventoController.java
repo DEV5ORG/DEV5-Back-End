@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -28,12 +30,12 @@ public class EventoController {
     }
 
     @PostMapping
-    public Evento createEvento(@RequestBody Evento evento) {
+    public Evento createEvento(@Valid @RequestBody Evento evento) {
         return eventoService.createEvento(evento);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Evento> updateEvento(@PathVariable Integer id, @RequestBody Evento eventoDetails) {
+    public ResponseEntity<Evento> updateEvento(@PathVariable Integer id, @Valid @RequestBody Evento eventoDetails) {
         Evento updatedEvento = eventoService.updateEvento(id, eventoDetails);
         return ResponseEntity.ok(updatedEvento);
     }

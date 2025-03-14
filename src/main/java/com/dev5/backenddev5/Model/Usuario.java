@@ -31,9 +31,6 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private String contraseña;
 
-    @Column(nullable = false)
-    private String tipoUsuario;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -53,7 +50,6 @@ public class Usuario implements UserDetails {
         this.nombre = nombre;
         this.correoElectronico = correoElectronico;
         this.contraseña = contraseña;
-        this.tipoUsuario = tipoUsuario;
         this.role = role;
         this.eventos = eventos;
         this.servicios = servicios;
@@ -112,14 +108,6 @@ public class Usuario implements UserDetails {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
     }
 
     public Role getRole() {
