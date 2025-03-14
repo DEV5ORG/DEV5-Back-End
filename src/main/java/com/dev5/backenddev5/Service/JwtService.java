@@ -55,6 +55,7 @@ public class JwtService {
     }
 
     public String generateToken(Usuario user) {
+        //Funcion donde agregue el JWT
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("role", user.getRole().name());
         extraClaims.put("nombre", user.getNombre());

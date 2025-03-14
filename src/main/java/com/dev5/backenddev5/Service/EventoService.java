@@ -58,7 +58,6 @@ public class EventoService {
         }
     }
 
-    // Metodo para obtener eventos por el id del usuario
     public List<Evento> getEventosByUsuarioId(Integer usuarioId) {
         return eventoRepository.findByUsuarioId(usuarioId);
     }
