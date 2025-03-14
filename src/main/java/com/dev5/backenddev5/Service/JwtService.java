@@ -54,7 +54,7 @@ public class JwtService {
                 .builder()
                 .subject(user.getCorreoElectronico())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 26*60*60*1000))
+                .expiration(new Date(System.currentTimeMillis() + 4*60*60*1000)) // 4 horas
                 .signWith(getSigninKey())
                 .compact();
 
