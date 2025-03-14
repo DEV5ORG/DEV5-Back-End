@@ -18,6 +18,9 @@ public class JwtService {
 
     private String SECRET_KEY = "42c6c011e2b37411b1718d20cac92ab6286c5f29d755913a10d15834bc71dc32";
 
+    @Value("${jwt.expiration.hours}")
+    private int expirationHours;
+
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
@@ -54,7 +57,8 @@ public class JwtService {
                 .builder()
                 .subject(user.getCorreoElectronico())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 4*60*60*1000)) // 4 horas
+                .expiration(new Date(
+                        System.currentTimeMillis() + expirationHours * 60 * 60 * 1000))
                 .signWith(getSigninKey())
                 .compact();
 
