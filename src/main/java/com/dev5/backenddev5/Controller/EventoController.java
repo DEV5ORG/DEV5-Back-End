@@ -45,4 +45,11 @@ public class EventoController {
         eventoService.deleteEvento(id);
         return ResponseEntity.noContent().build();
     }
+    // Nuevo endpoint para obtener eventos por usuario
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<Evento>> getEventosByUsuarioId(@PathVariable Integer usuarioId) {
+        List<Evento> eventos = eventoService.getEventosByUsuarioId(usuarioId);
+        // Si hay eventos, los devuelve con un status 200. Si no, devuelve un 404.
+        return eventos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(eventos);
+    }
 }

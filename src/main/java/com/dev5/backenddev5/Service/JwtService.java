@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 @Service
@@ -53,16 +55,17 @@ public class JwtService {
     }
 
     public String generateToken(Usuario user) {
-        String token = Jwts
-                .builder()
-                .subject(user.getCorreoElectronico())
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(
-                        System.currentTimeMillis() + expirationHours * 60 * 60 * 1000))
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("role", user.getRole().name());
+        extraClaims.put("nombre", user.getNombre());
+
+        return Jwts.builder()
+                .setClaims(extraClaims)
+                .setSubject(user.getCorreoElectronico())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 26 * 60 * 60 * 1000))
                 .signWith(getSigninKey())
                 .compact();
-
-        return token;
     }
 
     private SecretKey getSigninKey() {
