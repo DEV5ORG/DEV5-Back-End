@@ -7,7 +7,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 @Service
@@ -34,5 +37,16 @@ public class UsuarioService implements UserDetailsService {
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
         return repository.findByCorreoElectronico(correo)
                 .orElseThrow(()-> new UsernameNotFoundException("User not found"));
+    }
+
+    public Optional<Map<String, Object>> getUserByEmail(String correo) {
+        return repository.findByCorreoElectronico(correo)
+                .map(usuario -> {
+                    Map<String, Object> userData = new HashMap<>();
+                    userData.put("idUsuario", usuario.getId());
+                    userData.put("nombre", usuario.getNombre());
+                    userData.put("tipoUsuario", usuario.getRole().name());
+                    return userData;
+                });
     }
 }

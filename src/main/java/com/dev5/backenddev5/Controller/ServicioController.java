@@ -45,4 +45,11 @@ public class ServicioController {
         servicioService.deleteServicio(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/sin-items")
+    public List<Servicio> getAllServiciosWithoutItems() {
+        return servicioService.getServiciosSinItems();
+    }
+
+
 }

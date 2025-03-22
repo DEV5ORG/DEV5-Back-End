@@ -25,10 +25,20 @@ public class Servicio {
     @JsonBackReference
     private Usuario usuario;
 
+    @NotNull(message = "El nombre no puede ser nulo")
+    @Size(min = 1, max = 100, message = "El nombre debe tener entre 1 y 100 caracteres")
+    @Column(nullable = false)
+    private String nombre;
+
+    @NotNull(message = "La descripción no puede ser nula")
+    @Size(min = 1, max = 500, message = "La descripción debe tener entre 1 y 500 caracteres")
+    @Column(nullable = false)
+    private String descripcion;
+
     @NotNull(message = "El tipo de servicio no puede ser nulo")
     @Size(min = 1, max = 100, message = "El tipo de servicio debe tener entre 1 y 100 caracteres")
     @Column(nullable = false)
-    private String tipoServicio;
+    private TipoServicio tipoServicio;
 
     @NotNull(message = "La imagen no puede ser nula")
     @Size(min = 1, max = 500, message = "La imagen debe tener entre 1 y 500 caracteres")
@@ -51,9 +61,11 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(Integer id, Usuario usuario, String tipoServicio, String imagen, String ubicacion, List<Item> items, List<HorariosAtencion> horariosDeAtencion) {
+    public Servicio(Integer id, Usuario usuario, String nombre, String descripcion, TipoServicio tipoServicio, String imagen, String ubicacion, List<Item> items, List<HorariosAtencion> horariosDeAtencion) {
         this.id = id;
         this.usuario = usuario;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.tipoServicio = tipoServicio;
         this.imagen = imagen;
         this.ubicacion = ubicacion;
@@ -77,11 +89,27 @@ public class Servicio {
         this.usuario = usuario;
     }
 
-    public String getTipoServicio() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public TipoServicio getTipoServicio() {
         return tipoServicio;
     }
 
-    public void setTipoServicio(String tipoServicio) {
+    public void setTipoServicio(TipoServicio tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
 
