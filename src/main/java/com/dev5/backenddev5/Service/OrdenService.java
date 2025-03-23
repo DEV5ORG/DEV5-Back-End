@@ -39,8 +39,21 @@ public class OrdenService {
 
     public Orden createOrden(Orden orden) {
         validateEvento(orden.getEvento().getId());
-        return ordenRepository.save(orden);
+
+        // Crear la orden sin factura
+        orden.setFactura(null);
+        Orden nuevaOrden = ordenRepository.save(orden);
+
+        // Crear y asociar la factura después de que la orden tenga un ID
+        Factura factura = new Factura();
+        factura.setOrden(nuevaOrden);
+        Factura nuevaFactura = facturaRepository.save(factura);
+
+        // Asociar la factura a la orden y guardar de nuevo
+        nuevaOrden.setFactura(nuevaFactura);
+        return ordenRepository.save(nuevaOrden);
     }
+
 
     public Orden updateOrden(Integer id, Orden ordenDetails) {
         Orden orden = ordenRepository.findById(id).orElseThrow(() -> new RuntimeException("Orden not found"));

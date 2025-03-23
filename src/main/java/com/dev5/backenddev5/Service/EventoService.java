@@ -57,4 +57,8 @@ public class EventoService {
             throw new RuntimeException("Usuario not found");
         }
     }
+
+    public List<Evento> getEventosByUsuarioId(Integer usuarioId) {
+        return eventoRepository.findByUsuarioId(usuarioId);
+    }
 }

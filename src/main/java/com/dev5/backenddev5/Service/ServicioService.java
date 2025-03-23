@@ -52,4 +52,8 @@ public class ServicioService {
             throw new RuntimeException("Usuario not found");
         }
     }
+
+    public List<Servicio> getServiciosSinItems() {
+        return servicioRepository.findAllWithoutItemsJoin();
+    }
 }
