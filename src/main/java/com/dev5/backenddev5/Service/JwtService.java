@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,24 @@ public class JwtService {
 
     @Value("${jwt.expiration.hours}")
     private int expirationHours;
+
+    @Autowired
+    private TokenBlacklistService tokenBlacklistService;
+
+    public boolean isTokenValid(String token) {
+        if (tokenBlacklistService.isBlacklisted(token)) {
+            return false;
+        }
+
+        // Continue with your existing validation logic
+        try {
+            Claims claims = extractAllClaims(token);
+            Date expiration = claims.getExpiration();
+            return expiration.after(new Date());
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         Claims claims = extractAllClaims(token);
