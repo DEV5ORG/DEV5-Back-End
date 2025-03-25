@@ -1,6 +1,7 @@
 package com.dev5.backenddev5.Filter;
 
 import com.dev5.backenddev5.Service.JwtService;
+import com.dev5.backenddev5.Service.TokenBlacklistService;
 import com.dev5.backenddev5.Service.UsuarioService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -21,10 +22,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UsuarioService userDetailService;
+    private final TokenBlacklistService tokenBlacklistService;
 
-    public JwtAuthenticationFilter(JwtService jwtService, UsuarioService userDetailService) {
+    public JwtAuthenticationFilter(
+            JwtService jwtService,
+            UsuarioService userDetailService,
+            TokenBlacklistService tokenBlacklistService) {
         this.jwtService = jwtService;
         this.userDetailService = userDetailService;
+        this.tokenBlacklistService = tokenBlacklistService;
     }
 
     @Override
@@ -42,6 +48,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String token = authHeader.substring(7);
+
+        // Check if token is blacklisted before proceeding
+        if (tokenBlacklistService.isBlacklisted(token)) {
+            System.out.println("Token is blacklisted (user has logged out)");
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String username = jwtService.extractUsername(token);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
