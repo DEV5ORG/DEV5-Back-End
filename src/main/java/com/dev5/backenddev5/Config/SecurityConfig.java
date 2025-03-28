@@ -20,13 +20,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     private final UsuarioService userDetailsServiceImp;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final PublicRoutesConfig publicRoutesConfig;
 
-    public SecurityConfig(UsuarioService userDetailsServiceImp, JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(UsuarioService userDetailsServiceImp, JwtAuthenticationFilter jwtAuthenticationFilter, PublicRoutesConfig publicRoutesConfig) {
         this.userDetailsServiceImp = userDetailsServiceImp;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.publicRoutesConfig = publicRoutesConfig;
     }
 
     @Bean
@@ -34,7 +35,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req->req.requestMatchers("/api/login/**","/api/register/**")
+                        req -> req.requestMatchers(publicRoutesConfig.getPublicPaths().toArray(new String[0]))
                                 .permitAll()
                                 .requestMatchers("/admin_only/**").hasAuthority("ADMIN")
                                 .anyRequest()

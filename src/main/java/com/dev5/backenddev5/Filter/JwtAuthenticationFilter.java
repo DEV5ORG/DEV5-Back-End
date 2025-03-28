@@ -1,5 +1,6 @@
 package com.dev5.backenddev5.Filter;
 
+import com.dev5.backenddev5.Config.PublicRoutesConfig;
 import com.dev5.backenddev5.Service.JwtService;
 import com.dev5.backenddev5.Service.TokenBlacklistService;
 import com.dev5.backenddev5.Service.UsuarioService;
@@ -23,14 +24,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UsuarioService userDetailService;
     private final TokenBlacklistService tokenBlacklistService;
+    private final PublicRoutesConfig publicRoutesConfig;
 
     public JwtAuthenticationFilter(
             JwtService jwtService,
             UsuarioService userDetailService,
-            TokenBlacklistService tokenBlacklistService) {
+            TokenBlacklistService tokenBlacklistService,
+            PublicRoutesConfig publicRoutesConfig) {
         this.jwtService = jwtService;
         this.userDetailService = userDetailService;
         this.tokenBlacklistService = tokenBlacklistService;
+        this.publicRoutesConfig = publicRoutesConfig;
     }
 
     @Override
@@ -40,6 +44,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
+        String requestURI = request.getRequestURI();
+
+        // Early return si la ruta es pública, no necesita el token en los headers
+        if (isPublicRoute(requestURI)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             System.out.println("Authorization header missing or invalid!");
@@ -79,4 +90,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
+    private boolean isPublicRoute(String requestURI) {
+        return publicRoutesConfig.getPublicPaths().stream()
+                .anyMatch(pattern -> matchRoute(requestURI, pattern));
+    }
+
+    private boolean matchRoute(String requestURI, String pattern) {
+        if (pattern.endsWith("/**")) {
+            return requestURI.startsWith(pattern.substring(0, pattern.length() - 3));
+        }
+        return requestURI.equals(pattern);
+    }
+
 }
