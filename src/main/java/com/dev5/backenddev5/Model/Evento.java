@@ -1,6 +1,7 @@
 package com.dev5.backenddev5.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.*;
@@ -64,6 +65,7 @@ public class Evento {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Orden> ordenes = new ArrayList<>();
 
     // Constructor

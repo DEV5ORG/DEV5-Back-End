@@ -10,6 +10,7 @@ import com.dev5.backenddev5.Repository.ItemDeOrdenRepository;
 import com.dev5.backenddev5.Repository.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,30 +40,47 @@ public class OrdenService {
 
     public Orden createOrden(Orden orden) {
         validateEvento(orden.getEvento().getId());
-
-        // Crear la orden sin factura
-        orden.setFactura(null);
-        Orden nuevaOrden = ordenRepository.save(orden);
-
-        // Crear y asociar la factura después de que la orden tenga un ID
-        Factura factura = new Factura();
-        factura.setOrden(nuevaOrden);
-        Factura nuevaFactura = facturaRepository.save(factura);
-
-        // Asociar la factura a la orden y guardar de nuevo
-        nuevaOrden.setFactura(nuevaFactura);
-        return ordenRepository.save(nuevaOrden);
+        return ordenRepository.save(orden);
     }
 
 
+    @Transactional
     public Orden updateOrden(Integer id, Orden ordenDetails) {
-        Orden orden = ordenRepository.findById(id).orElseThrow(() -> new RuntimeException("Orden not found"));
-        validateEvento(ordenDetails.getEvento().getId());
+        // Buscar la orden existente
+        Orden orden = ordenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Orden not found"));
+
+        // Actualizar fechas y evento
         orden.setFecha1(ordenDetails.getFecha1());
         orden.setFecha2(ordenDetails.getFecha2());
-        orden.setEvento(ordenDetails.getEvento());
-        orden.setItemsDeOrden(ordenDetails.getItemsDeOrden());
-        orden.setFactura(ordenDetails.getFactura());
+
+        // Manejar actualización de items de orden
+        if (ordenDetails.getItemsDeOrden() != null && !ordenDetails.getItemsDeOrden().isEmpty()) {
+            // Limpiar items de orden existentes
+            orden.getItemsDeOrden().clear();
+
+            // Recorrer y agregar nuevos items de orden
+            for (ItemDeOrden itemDeOrden : ordenDetails.getItemsDeOrden()) {
+                // Buscar el item de orden completo por su ID
+                ItemDeOrden itemCompleto = itemDeOrdenRepository.findById(itemDeOrden.getId())
+                        .orElseThrow(() -> new RuntimeException("Item de Orden not found with id: " + itemDeOrden.getId()));
+
+                // Añadir item de orden a la orden
+                orden.getItemsDeOrden().add(itemCompleto);
+            }
+        }
+
+        // Manejar actualización de factura
+        if (ordenDetails.getFactura() != null) {
+            // Buscar la factura completa por su ID
+            Factura facturaCompleta = facturaRepository.findById(ordenDetails.getFactura().getId())
+                    .orElseThrow(() -> new RuntimeException("Factura not found with id: " + ordenDetails.getFactura().getId()));
+
+            // Establecer la factura
+            orden.setFactura(facturaCompleta);
+        }
+
+        // Guardar y retornar la orden actualizada
         return ordenRepository.save(orden);
     }
 

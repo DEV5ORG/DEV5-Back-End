@@ -1,5 +1,6 @@
 package com.dev5.backenddev5.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class ItemDeOrden {
 
     @ManyToOne
     @JoinColumn(name = "orden_id")
+    @JsonBackReference
     private Orden orden;
 
     @ManyToOne
