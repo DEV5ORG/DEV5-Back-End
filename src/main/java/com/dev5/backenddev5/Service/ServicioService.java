@@ -1,6 +1,7 @@
 package com.dev5.backenddev5.Service;
 
 import com.dev5.backenddev5.Model.Servicio;
+import com.dev5.backenddev5.Model.TipoServicio;
 import com.dev5.backenddev5.Model.Usuario;
 import com.dev5.backenddev5.Repository.ServicioRepository;
 import com.dev5.backenddev5.Repository.UsuarioRepository;
@@ -55,5 +56,10 @@ public class ServicioService {
 
     public List<Servicio> getServiciosSinItems() {
         return servicioRepository.findAllWithoutItemsJoin();
+    }
+    // Metodo para obtener los servicios de tipo 'Lugares'
+    public List<Servicio> getServiciosByTipoLugares() {
+        return servicioRepository.findByTipoServicio();
+
     }
 }

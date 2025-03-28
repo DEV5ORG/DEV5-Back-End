@@ -1,6 +1,7 @@
 package com.dev5.backenddev5.Controller;
 
 import com.dev5.backenddev5.Model.Servicio;
+import com.dev5.backenddev5.Model.TipoServicio;
 import com.dev5.backenddev5.Service.ServicioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,9 @@ public class ServicioController {
     public List<Servicio> getAllServiciosWithoutItems() {
         return servicioService.getServiciosSinItems();
     }
-
-
+    // Endpoint para obtener todos los servicios de tipo 'Lugares'
+    @GetMapping("/lugares")
+    public List<Servicio> getAllLugares() {
+        return servicioService.getServiciosByTipoLugares();
+    }
 }
