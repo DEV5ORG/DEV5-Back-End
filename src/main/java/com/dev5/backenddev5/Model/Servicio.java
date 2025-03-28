@@ -37,7 +37,6 @@ public class Servicio {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @NotNull(message = "El tipo de servicio no puede ser nulo")
-    @Size(min = 1, max = 100, message = "El tipo de servicio debe tener entre 1 y 100 caracteres")
     private TipoServicio tipoServicio;
 
     @NotNull(message = "La imagen no puede ser nula")
