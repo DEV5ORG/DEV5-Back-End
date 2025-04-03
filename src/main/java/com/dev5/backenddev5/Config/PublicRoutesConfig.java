@@ -9,7 +9,9 @@ public class PublicRoutesConfig {
     private static final List<String> PUBLIC_PATHS = Arrays.asList(
             "/api/login/**",
             "/api/register/**",
-            "/api/keep-alive/**"
+            "/api/keep-alive/**",
+            "/api/pwd-recovery/**",
+            "/api/pwd-change/**"
     );
 
     public List<String> getPublicPaths() {
