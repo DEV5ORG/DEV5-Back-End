@@ -11,7 +11,8 @@ public class PublicRoutesConfig {
             "/api/register/**",
             "/api/keep-alive/**",
             "/api/pwd-recovery/**",
-            "/api/pwd-change/**"
+            "/api/pwd-change/**",
+            "/api/validate-token/**"
     );
 
     public List<String> getPublicPaths() {

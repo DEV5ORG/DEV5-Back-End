@@ -64,6 +64,16 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping("/api/validate-token/{token}")
+    public ResponseEntity<?> validartoken(@PathVariable(value = "token") String token) {
+        try {
+            authService.validateToken(token);
+            return ResponseEntity.ok().build();
+        } catch (PasswordChangeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
     @PutMapping("/api/pwd-change/{token}")
     public ResponseEntity<?> cambiarpwd(@PathVariable(value = "token") String token, @RequestBody Usuario request) {
         try {

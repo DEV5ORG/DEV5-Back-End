@@ -85,7 +85,20 @@ public class AuthenticationService {
         return token;
     }
 
-    public boolean changePassword(String token, Usuario request) {
+    public void validateToken(String token) {
+        // Validar si el token existe y es válido
+        PwdToken pwdToken = pwdTokenRepository.findByToken(token)
+                .orElseThrow(() -> new PasswordChangeException(
+                        "El token es invalido, por favor vuelva a crear uno nuevo en recuperación de contraseña."));
+
+        // Validar si el token ha expirado
+        if (pwdToken.getFecha().isBefore(LocalDateTime.now())) {
+            throw new PasswordChangeException(
+                    "El token ha expirado, por favor vuelva a crear uno nuevo en recuperación de contraseña.");
+        }
+    }
+
+    public void changePassword(String token, Usuario request) {
 
         String newPassword = request.getContraseña();
 
@@ -113,6 +126,5 @@ public class AuthenticationService {
         String contrasenaEncriptada = passwordEncoder.encode(newPassword);
         usuario.setContraseña(contrasenaEncriptada);
         repository.save(usuario);
-        return true;
     }
 }
