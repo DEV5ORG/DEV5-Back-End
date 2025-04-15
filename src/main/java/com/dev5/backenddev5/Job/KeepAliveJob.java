@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class KeepAliveJob {
     private final RestTemplate restTemplate = new RestTemplate();
     // Este job solo es útil para el recurso público. URL hardcodeada para mayor facilidad.
-    private static final String KEEP_ALIVE_URL = "https://dev5-back-end.onrender.com/api/keep-alive";
+    private static final String KEEP_ALIVE_URL = "https://dev5-back-end-ypiu.onrender.com/api/keep-alive";
 
     @Scheduled(fixedRate = 600_000)
     public void callKeepAliveEndpoint() {
