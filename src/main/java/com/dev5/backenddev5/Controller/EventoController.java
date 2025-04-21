@@ -52,4 +52,10 @@ public class EventoController {
         // Si hay eventos, los devuelve con un status 200. Si no, devuelve un 404.
         return eventos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(eventos);
     }
+
+    @GetMapping("/count/{usuarioId}")
+    public ResponseEntity<Long> countEventosByUsuario(@PathVariable Integer usuarioId) {
+        long count = eventoService.countEventosByUsuarioId(usuarioId);
+        return ResponseEntity.ok(count);
+    }
 }

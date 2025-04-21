@@ -61,4 +61,8 @@ public class EventoService {
     public List<Evento> getEventosByUsuarioId(Integer usuarioId) {
         return eventoRepository.findByUsuarioId(usuarioId);
     }
+
+    public long countEventosByUsuarioId(Integer usuarioId) {
+        return eventoRepository.countByUsuarioId(usuarioId);
+    }
 }
