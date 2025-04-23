@@ -1,134 +1,80 @@
-# DEV5-Back-End
-# Equipo de desarrollo
-- Douglas Conejo Cascante
-- Elizabeth Sequeira Suárez
-- Steven Montoya Calderón
-- Andrés Quesada Arias
-- Diego Fiatt Vargas
+# DEV5 - Back-End
 
-# Descripción del Proyecto
+## 🧑‍💻 Equipo de Desarrollo
+- Douglas Conejo Cascante  
+- Elizabeth Sequeira Suárez  
+- Steven Montoya Calderón  
+- Andrés Quesada Arias  
+- Diego Fiatt Vargas  
+
+## 📌 Descripción del Proyecto
 Organizar un evento es un proceso fragmentado y poco eficiente. Actualmente, los usuarios deben buscar, contactar y coordinar con múltiples proveedores de manera independiente, lo que genera una gran inversión de tiempo y esfuerzo. Además, la falta de una plataforma centralizada dificulta la comparación de precios, disponibilidad y calidad del servicio, lo que puede llevar a experiencias insatisfactorias o a sobrecostos inesperados.
 
-La solución propuesta es una aplicación móvil que centraliza todos los servicios necesarios para la organización de eventos. A través de esta plataforma, los usuarios podrán buscar lugares según su presupuesto y número de invitados, reservar espacios con fecha y hora específica, contratar servicios de comida y entretenimiento.
+La solución propuesta es una aplicación que centraliza todos los servicios necesarios para la organización de eventos. A través de esta plataforma, los usuarios podrán buscar lugares según su presupuesto y número de invitados, reservar espacios con fecha y hora específica, y contratar servicios como comida y entretenimiento.
 
-# Requisitos Iniciales
-### Requisitos funcionales
-#### Gestión de Usuarios y Autenticación
-- El sistema debe permitir el registro de usuarios mediante correo electrónico y contraseña.
-- El sistema debe permitir al usuario ingresar con su correo electrónico y contraseña.
-- El sistema debe permitir la recuperación de contraseña mediante "¿Olvidaste tu contraseña?".
-- Los usuarios deben poder gestionar su perfil personal.
-#### Gestión de Eventos
-- Los usuarios clientes y administradores deben poder crear eventos con la siguiente información:
-  - Nombre del evento
-  - Fecha y hora
-  - Ubicación
-  - Proveedor y selección de comida 
-  - Entretenimiento
-  - Capacidad máxima
-  - Imágenes para invitación del evento
-  - Descripción
-  - Categoría del evento
-- Búsqueda y Visualización de Eventos
-- Los usuarios clientes y administradores deben poder buscar eventos mediante filtros:
-  - Tipo de evento
-  - Ubicación
-- El sistema debe mostrar los eventos en formato de lista con imágenes y detalles básicos como nombre, fecha, hora y lugar
-- Los usuarios clientes deben poder ver detalles completos de los eventos que les pertenezcan.
-- Los usuarios administradores deben poder ver detalles completos de cada evento existente.
-#### Sistema de Reservas
-- Los usuarios deben poder seleccionar fecha y hora específica para su reserva
-- Al momento de que el usuario intenta hacer una reservación de un evento, el sistema debe validar la disponibilidad de fechas.
-- El sistema debe generar confirmaciones de reserva
-- Los usuarios deben poder ver el historial de sus reservas
-- El sistema debe mostrar un carrito en donde se muestran los detalles de los eventos reservados por el usuario
-- El sistema debe mostrar al usuario una invitación luego de haber realizado el pago del evento
-- El sistema debe permitir compartir la invitación del evento
-### Requisitos no funcionales
-#### Rendimiento
-- La aplicación debe cargar en menos de 3 segundos
-- Las búsquedas deben mostrar resultados en menos de 2 segundos
-- El sistema debe soportar al menos 1000 usuarios concurrentes
-- La aplicación debe funcionar sin interrupciones 24/7
-#### Seguridad
-- Las contraseñas deben almacenarse utilizando algoritmos de hash seguros
-- Las rutas tanto en la interfaz de usuario como en la api deben estar protegidas por permisos de usuario.
-#### Usabilidad
-- La interfaz debe ser intuitiva y fácil de usar
-- La aplicación debe ser responsive y adaptarse a diferentes tamaños de pantalla
-- La aplicación debe seguir las guías de diseño de iOS y Android
-- El sistema debe proporcionar feedback claro sobre las acciones realizadas
-#### Compatibilidad
-La aplicación debe funcionar en iOS 13 o superior
-La aplicación debe funcionar en Android 8.0 o superior
+---
 
-# Diseño de la Base de Datos
-![BD-DEV5 (2)](https://github.com/user-attachments/assets/ed6c6cb6-002d-4a3d-a1b1-f40e750a1a20)
+## ⚙️ Tecnologías Utilizadas
 
-# Diagrama de Arquitectura
-![Diagrama-de-Arquitectura (2)](https://github.com/user-attachments/assets/099ea7bf-ab1f-46db-bbb8-1b3740ccb04e)
+- **Lenguaje:** Java  
+- **Framework:** Spring Boot  
+- **Base de Datos:** P4Admin  
+- **Gestión de dependencias:** Maven  
+- **Control de versiones:** Git
 
-# Tecnologías utilizadas
-- React Native
-- Springboot
-- Java
+---
 
-# Manual de Usuario
-Por hacer
-  
-# 📱 React Native App con Expo - Manual de Instalación
+## 🏗️ Arquitectura del Sistema
 
-## 📌 Requisitos previos
+![Diagrama de Arquitectura](https://github.com/user-attachments/assets/099ea7bf-ab1f-46db-bbb8-1b3740ccb04e)
 
-Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
+---
 
-- **Java JDK** (versión recomendada: LTS) 👉 [Descargar aquí]([https://nodejs.org/](https://www.oracle.com/java/technologies/downloads/))
-- **Git** 👉 [Descargar aquí](https://git-scm.com/)
+## 🗃️ Diseño de la Base de Datos
 
-## 🚀 Instalación y configuración
+![Base de Datos](https://github.com/user-attachments/assets/ed6c6cb6-002d-4a3d-a1b1-f40e750a1a20)
 
-Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
+---
 
-### 1️⃣ Clonar el repositorio
+## ✅ Requisitos Iniciales
 
-### 2️⃣ Instalar IDE de preferencia(Preferiblemente INTELLIJ IDEA)
+### Funcionales
 
-### 3️⃣ Inizializar Spring Boot desde el IDE y descargar sus dependencias con MAVEN:
+#### 👤 Gestión de Usuarios y Autenticación
+- Registro, inicio de sesión y recuperación de contraseña.
+- Gestión de perfil de usuario.
 
-#### ➤ Opción 1: Usar un emulador (Android o iOS)
+#### 📅 Gestión de Eventos
+- Crear eventos con detalles como nombre, fecha, lugar, servicios, imágenes, descripción y categoría.
+- Filtrado y búsqueda de eventos.
+- Vista detallada para clientes y administradores.
 
-Si prefieres usar un emulador, sigue las instrucciones según tu sistema operativo:
+#### 📆 Sistema de Reservas
+- Selección de fecha y hora.
+- Validación de disponibilidad.
+- Confirmaciones, historial y carrito de reservas.
+- Generación y compartición de invitaciones tras el pago.
 
-- [Guía oficial](https://reactnative.dev/docs/set-up-your-environment)
+### No Funcionales
 
-#### ➤ Opción 2 (Recomendada): Usar un dispositivo físico
+#### 🚀 Rendimiento
+- Carga inicial < 3 segundos.
+- Búsqueda < 2 segundos.
+- Soporte para 1000 usuarios concurrentes.
 
-1. Instala la aplicación **Expo Go** en tu teléfono:
-   - 📱 [Documentación de descarga](https://docs.expo.dev/get-started/set-up-your-environment/)
+#### 🔐 Seguridad
+- Contraseñas con hash seguro.
+- Rutas protegidas según roles.
 
-### 4️⃣ Ejecutar la aplicación
+#### 🎯 Usabilidad y Compatibilidad
+- Interfaz intuitiva y responsive.
+- Compatible con iOS 13+ y Android 8.0+.
 
-Una vez configurado el entorno, inicia el servidor de desarrollo con:
+---
 
-```sh
- npm run start
-```
+## 🔧 Instalación y Configuración del Back-End
 
-Aparecerá un código QR en la terminal. Escanéalo con la app **Expo Go** para ejecutar la aplicación en tu dispositivo. Finalmente verifiquen que se está usando **Expo Go** en consola, caso contrario las indicaciones aparecen en las opciones.
+### 1️⃣ Clonar el Repositorio
+```bash
 
-### 4️⃣ Variables de ambiente
-```sh
-EXPO_PUBLIC_API_URL=https://dev5-back-end-ypiu.onrender.com
-```
 
-## 📖 Guía de desarrollo
-
-Para mantener un código limpio y consistente, seguimos estas convenciones de nomenclatura:
-
-- **Enums** → PascalCase → `enum UserRole { Admin, User }`
-- **Constantes** → UPPER_SNAKE_CASE → `const API_BASE_URL = "..."`
-- **Variables y funciones** → camelCase → `const userName = "..."`
-- **Componentes de React** → PascalCase → `const UserProfile = () => {...}`
-- **Hooks de React** → camelCase → `const useAuth = () => {...}`
-- **Stores** → Deben terminar con el sufijo `-store`, por ejemplo: `user-store.tsx`
-- **Nombres de archivos** → kebab-case → `este-es-mi-archivo.tsx`
