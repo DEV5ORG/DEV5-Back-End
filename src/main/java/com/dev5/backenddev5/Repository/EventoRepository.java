@@ -9,4 +9,6 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     List<Evento> findByUsuarioId(Integer usuarioId);
 
+    long countByUsuarioId(Integer usuarioId);
+
 }

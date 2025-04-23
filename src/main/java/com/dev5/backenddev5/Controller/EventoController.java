@@ -49,7 +49,7 @@ public class EventoController {
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Evento>> getEventosByUsuarioId(@PathVariable Integer usuarioId) {
         List<Evento> eventos = eventoService.getEventosByUsuarioId(usuarioId);
-        return ResponseEntity.ok(eventos); // Siempre retorna 200 OK, aunque la lista esté vacía
+        // Si hay eventos, los devuelve con un status 200. Si no, devuelve un 404.
+        return eventos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(eventos);
     }
-
 }
