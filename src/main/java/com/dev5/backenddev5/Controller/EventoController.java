@@ -49,7 +49,13 @@ public class EventoController {
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Evento>> getEventosByUsuarioId(@PathVariable Integer usuarioId) {
         List<Evento> eventos = eventoService.getEventosByUsuarioId(usuarioId);
-        // Si hay eventos, los devuelve con un status 200. Si no, devuelve un 404.
-        return eventos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(eventos);
+        return ResponseEntity.ok(eventos);
     }
+
+    @GetMapping("/count/{usuarioId}")
+    public ResponseEntity<Long> countEventosByUsuario(@PathVariable Integer usuarioId) {
+        long count = eventoService.countEventosByUsuarioId(usuarioId);
+        return ResponseEntity.ok(count);
+    }
+
 }
