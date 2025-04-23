@@ -28,4 +28,11 @@ public interface ServicioRepository extends JpaRepository<Servicio, Integer> {
     @Query("SELECT s FROM Servicio s WHERE s.tipoServicio = 'Lugares'")
     List<Servicio> findByTipoServicio();
 
+
+    // Consulta para obtener los servicios con los campos requeridos y los horarios de atención
+    @Query("SELECT  s.nombre, s.descripcion, s.tipoServicio, s.imagen, s.ubicacion, h " +
+            "FROM Servicio s LEFT JOIN s.horariosDeAtencion h")
+    List<Object[]> findAllWithRequiredFields();
+
+
 }

@@ -62,4 +62,10 @@ public class ServicioService {
         return servicioRepository.findByTipoServicio();
 
     }
+
+
+    // Metodo para obtener todos los servicios con los campos requeridos y los horarios de atención
+    public List<Object[]> getAllServiciosWithRequiredFields() {
+        return servicioRepository.findAllWithRequiredFields();
+    }
 }

@@ -56,4 +56,10 @@ public class ServicioController {
     public List<Servicio> getAllLugares() {
         return servicioService.getServiciosByTipoLugares();
     }
+    // Endpoint para obtener todos los servicios con los campos requeridos y los horarios de atención
+    @GetMapping("/resumidos")
+    public ResponseEntity<List<Object[]>> getAllServiciosResumidos() {
+        List<Object[]> servicios = servicioService.getAllServiciosWithRequiredFields();
+        return ResponseEntity.ok(servicios);
+    }
 }

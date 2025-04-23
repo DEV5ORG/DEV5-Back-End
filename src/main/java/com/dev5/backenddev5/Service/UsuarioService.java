@@ -35,10 +35,26 @@ public class UsuarioService implements UserDetailsService {
     //LoadByEmail
     @Override
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
+        System.out.println("Buscando usuario con correo: " + correo); // Agregar este log
+        Usuario usuario = repository.findByCorreoElectronico(correo)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        System.out.println("Usuario encontrado: " + usuario); // Agregar este log
+
+        return org.springframework.security.core.userdetails.User
+                .withUsername(usuario.getCorreoElectronico())
+                .password(usuario.getContraseña())
+                .authorities(usuario.getRole().name())
+                .build();
+    }
+
+
+ /**   @Override
+    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
         return repository.findByCorreoElectronico(correo)
                 .orElseThrow(()-> new UsernameNotFoundException("User not found"));
     }
-
+**/
     public Optional<Map<String, Object>> getUserByEmail(String correo) {
         return repository.findByCorreoElectronico(correo)
                 .map(usuario -> {

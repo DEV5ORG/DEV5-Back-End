@@ -63,7 +63,7 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body("Invalid email");
         }
     }
-
+//lISTO
     @GetMapping("/api/validate-token/{token}")
     public ResponseEntity<?> validartoken(@PathVariable(value = "token") String token) {
         try {
