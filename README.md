@@ -78,9 +78,11 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 
 - Agregamos la opción de Spring boot
 
-  ![image](https://github.com/user-attachments/assets/5c46b82f-3577-446e-adfa-c47b82a7c472)
+![image](https://github.com/user-attachments/assets/ffbdafff-c692-4199-9e97-7d30f0c2821a)
 
-  ![image](https://github.com/user-attachments/assets/b2856e3b-ed47-4197-a550-667da0ab4346)
+
+![image](https://github.com/user-attachments/assets/70813463-762e-4f0a-8766-9b76830ffb5a)
+
 
 
 
