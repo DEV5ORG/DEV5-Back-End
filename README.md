@@ -73,6 +73,8 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 ##  🚀 Para iniciar la aplicación con Spring Boot
 
 - Seleccionamos la opción que marca la flecha de color amarillo
+
+ #### Opción 1️⃣   
   
 ![image](https://github.com/user-attachments/assets/d0b71394-aab8-4407-b401-97e203bc4c88)
 
@@ -87,6 +89,20 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 - Agregamos los datos como salen en la imagen, y por último seleccionamos Apply
 
   ![image](https://github.com/user-attachments/assets/6fa46c69-1299-4ec2-aa6a-2433fe1469cf)
+
+ #### Opción 2️⃣ 
+
+ - Nos vamos al pom.xml de nuestro proyecto clonado o descargado
+
+![image](https://github.com/user-attachments/assets/f3e1863b-f0a6-4a01-acc6-741faaed7329)
+
+- Seleccionamos click derecho en el editor de código
+- Escogemos la opción de Maven
+- Seleccionamos la opción Sync Project para descargar las dependencias e instalar Spring Boot
+
+![image](https://github.com/user-attachments/assets/d73ae5df-b65f-4807-be43-8f8b99015243)
+
+
 
 
 
