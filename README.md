@@ -84,7 +84,7 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 
 ![image](https://github.com/user-attachments/assets/70813463-762e-4f0a-8766-9b76830ffb5a)
 
-- Agregamos los datos como salen en la imagen
+- Agregamos los datos como salen en la imagen, y por último seleccionamos Apply
 
   ![image](https://github.com/user-attachments/assets/6fa46c69-1299-4ec2-aa6a-2433fe1469cf)
 
