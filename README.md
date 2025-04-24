@@ -70,7 +70,8 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 - Cualquier sistema operativo.
 - Compatible con iOS 13+ y Android 8.0+.
 ---
-Para iniciar la aplicaci+on con Spring Boot
+##  🚀 Para iniciar la aplicación con Spring Boot
+
 ![image](https://github.com/user-attachments/assets/d0b71394-aab8-4407-b401-97e203bc4c88)
 
 
