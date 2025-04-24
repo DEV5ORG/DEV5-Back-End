@@ -135,7 +135,7 @@ spring.jpa.show-sql=true
 
 ## 📖 Guía de desarrollo
 
-### Para probar los Apis que se manejan en los controllers se recomienda usar Postman [Descargar aquí]([https://www.pgadmin.org/download/](https://www.postman.com/downloads/)
+### Para probar los Apis que se manejan en los controllers se recomienda usar Postman [Descargar aquí](https://www.postman.com/downloads/)
 
 ### Para autenticación con los APIS siempre utilizar el token que es autogenerado por el API de login 
 
