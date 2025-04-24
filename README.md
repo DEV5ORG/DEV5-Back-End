@@ -76,6 +76,8 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 
 ### 1️⃣ Clonar el repositorio
 
+- Clonar el repositorio de development
+
 ### 2️⃣ Instalar Spring Boot
 
 - Seleccionamos la opción que marca la flecha de color amarillo
