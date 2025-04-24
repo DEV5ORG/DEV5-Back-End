@@ -70,7 +70,13 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 - Cualquier sistema operativo.
 - Compatible con iOS 13+ y Android 8.0+.
 ---
-##  🚀 Para iniciar la aplicación con Spring Boot
+## 🚀 Instalación y configuración
+
+Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
+
+### 1️⃣ Clonar el repositorio
+
+### 2️⃣ Instalar Spring Boot
 
 - Seleccionamos la opción que marca la flecha de color amarillo
 
