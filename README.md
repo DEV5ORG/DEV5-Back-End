@@ -52,15 +52,12 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 #### 📆 Sistema de Reservas
 - Selección de fecha y hora.
 - Validación de disponibilidad.
-- Confirmaciones, historial y carrito de reservas.
-- Generación y compartición de invitaciones tras el pago.
 
 ### No Funcionales
 
 #### 🚀 Rendimiento
-- Carga inicial < 3 segundos.
 - Búsqueda < 2 segundos.
-- Soporte para 1000 usuarios concurrentes.
+- Soporte para 100 usuarios concurrentes.
 
 #### 🔐 Seguridad
 - Contraseñas con hash seguro.
@@ -68,7 +65,7 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 
 #### 🎯 Usabilidad y Compatibilidad
 - Cualquier sistema operativo.
-- Compatible con iOS 13+ y Android 8.0+.
+  
 ---
 ## 🚀 Instalación y configuración
 
