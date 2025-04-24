@@ -112,7 +112,7 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 
 - Instalamos el motor de la base de datos [Descargar aquí](https://www.pgadmin.org/download/)
   
-- Configuramos el aplication.properties, aca hay un ejemplo
+- Configuramos el application.properties, aca hay un ejemplo
 ```sh
 spring.application.name=Nombre_de_Organizacion
 spring.datasource.url=jdbc:postgresql://localhost:8000/Tu_Base_De_Datos_En_P4Admin
