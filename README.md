@@ -126,7 +126,7 @@ spring.jpa.show-sql=true
 
 ![image](https://github.com/user-attachments/assets/c6e12414-c61b-4f5d-83a7-73b9c98e56a6)
 
-- Comprobación de que el código funciono correctamente y que se esat ejecutando
+- Comprobación de que el código funciono correctamente y que se esta ejecutando
 
 ![image](https://github.com/user-attachments/assets/a7b72c2c-10b4-4c3b-ac8e-52b1724a91a3)
 
