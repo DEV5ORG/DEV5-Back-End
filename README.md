@@ -80,9 +80,9 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 
 ### 2️⃣ Instalar Spring Boot
 
-- Seleccionamos la opción que marca la flecha de color amarillo
-
  #### Opción 1️⃣   
+
+ - Seleccionamos la opción que marca la flecha de color amarillo
   
 ![image](https://github.com/user-attachments/assets/d0b71394-aab8-4407-b401-97e203bc4c88)
 
