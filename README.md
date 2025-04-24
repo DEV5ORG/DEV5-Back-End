@@ -131,5 +131,9 @@ spring.jpa.show-sql=true
 
 ![image](https://github.com/user-attachments/assets/a7b72c2c-10b4-4c3b-ac8e-52b1724a91a3)
 
+---
 
+## 📖 Guía de desarrollo
+
+# Para probar los Apis que se manejan en los controllers se recomienda usar Postman [Descargar aquí]([https://www.pgadmin.org/download/](https://www.postman.com/downloads/)
 
