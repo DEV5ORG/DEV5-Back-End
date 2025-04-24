@@ -73,7 +73,15 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 ##  🚀 Para iniciar la aplicación con Spring Boot
 
 - Seleccionamos la opción que marca la flecha de color amarillo
+  
 ![image](https://github.com/user-attachments/assets/d0b71394-aab8-4407-b401-97e203bc4c88)
+
+- Agregamos la opción de Spring boot
+
+  ![image](https://github.com/user-attachments/assets/5c46b82f-3577-446e-adfa-c47b82a7c472)
+
+  ![image](https://github.com/user-attachments/assets/b2856e3b-ed47-4197-a550-667da0ab4346)
+
 
 
 
