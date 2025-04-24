@@ -64,17 +64,11 @@ La solución propuesta es una aplicación que centraliza todos los servicios nec
 
 #### 🔐 Seguridad
 - Contraseñas con hash seguro.
-- Rutas protegidas según roles.
+- Rutas protegidas.
 
 #### 🎯 Usabilidad y Compatibilidad
 - Interfaz intuitiva y responsive.
 - Compatible con iOS 13+ y Android 8.0+.
 
----
-
-## 🔧 Instalación y Configuración del Back-End
-
-### 1️⃣ Clonar el Repositorio
-```bash
 
 
