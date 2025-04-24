@@ -110,7 +110,7 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 
 ### 3️⃣ Configurar el entorno de Base de datos 
 
-- Instalamos el motor de la base de datos (https://www.pgadmin.org/download/)
+- Instalamos el motor de la base de datos [Descargar aquí](https://www.pgadmin.org/download/)
 
 
 
