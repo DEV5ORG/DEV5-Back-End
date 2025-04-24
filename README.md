@@ -108,8 +108,9 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 
 ![image](https://github.com/user-attachments/assets/d73ae5df-b65f-4807-be43-8f8b99015243)
 
+### 3️⃣ Configurar el entorno de Base de datos 
 
-
+- Instalamos el motor de la base de datos (https://www.pgadmin.org/download/)
 
 
 
