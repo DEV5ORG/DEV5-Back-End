@@ -111,7 +111,18 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno:
 ### 3️⃣ Configurar el entorno de Base de datos 
 
 - Instalamos el motor de la base de datos [Descargar aquí](https://www.pgadmin.org/download/)
-
+  
+- Configuramos el aplication.properties, aca hay un ejemplo
+```sh
+spring.application.name=Nombre_de_Organizacion
+spring.datasource.url=jdbc:postgresql://localhost:8000/Tu_Base_De_Datos_En_P4Admin
+spring.datasource.username= Tu_Username
+spring.datasource.password=Tu_Contraseña
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
 
 
 
